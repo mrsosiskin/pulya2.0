@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>СК "Пуля"</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.3s, color 0.3s, font-size 0.3s;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #1E2327, #2a3138);
+      color: #fff;
+      overflow-x: hidden;
+      padding-top: 80px;
+      font-size: 16px;
+    }
+
+    /* Цветовая схема */
+    :root {
+      --gold-main: #D3AA66;
+      --gold-dark: #b89352;
+      --gold-light: #e0c48a;
+      --gold-shadow: rgba(211, 170, 102, 0.5);
+      --bg-dark: #1E2327;
+      --bg-medium: #2a3138;
+      --bg-light: #3a424a;
+      --text-gray: #686C70;
+    }
+
+    /* Режим для слабовидящих */
+    body.accessibility-mode {
+      background: #fff !important;
+      color: #000 !important;
+      font-size: 20px !important;
+    }
+
+    body.accessibility-mode header,
+    body.accessibility-mode .service,
+    body.accessibility-mode .review,
+    body.accessibility-mode .hero-content,
+    body.accessibility-mode footer {
+      background: #f0f0f0 !important;
+      color: #000 !important;
+    }
+
+    body.accessibility-mode .logo-text,
+    body.accessibility-mode nav a:hover,
+    body.accessibility-mode h2,
+    body.accessibility-mode .btn,
+    body.accessibility-mode .hero-content h2,
+    body.accessibility-mode .hero-content p,
+    body.accessibility-mode .hero-content h2 i,
+    body.accessibility-mode .divider,
+    body.accessibility-mode .contact-info p,
+    body.accessibility-mode .review p {
+      color: #8B4513 !important;
+    }
+
+    body.accessibility-mode .btn {
+      background: #8B4513 !important;
+      color: #fff !important;
+      font-size: 1.1em !important;
+      padding: 1rem 2.2rem !important;
+    }
+
+    body.accessibility-mode nav a::after {
+      background: #8B4513 !important;
+    }
+
+    body.accessibility-mode h2,
+    body.accessibility-mode .hero-content h2,
+    body.accessibility-mode .divider h2 {
+      font-size: 2.8rem !important;
+    }
+
+    body.accessibility-mode p,
+    body.accessibility-mode li,
+    body.accessibility-mode span,
+    body.accessibility-mode .hero-content p,
+    body.accessibility-mode .service p,
+    body.accessibility-mode .review span {
+      font-size: 1.25em !important;
+      color: #000 !important;
+    }
+
+    body.accessibility-mode nav a {
+      font-size: 1.1em !important;
+    }
+
+    body.accessibility-mode .contact-info p {
+      font-size: 1.4rem !important;
+    }
+
+    body.accessibility-mode .service i,
+    body.accessibility-mode .contact-info i,
+    body.accessibility-mode h2 i,
+    body.accessibility-mode nav a i {
+      font-size: 2.5rem !important;
+      color: #8B4513 !important;
+    }
+
+    body.accessibility-mode .review span {
+      color: #555 !important;
+    }
+
+    body.accessibility-mode .divider {
+      background: #f0f0f0 !important;
+      color: #8B4513 !important;
+    }
+
+    /* Кнопка доступности */
+    .accessibility-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--gold-main);
+      color: #1E2327;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    body.accessibility-mode .accessibility-btn {
+      background: #8B4513;
+      color: #fff;
+    }
+
+    .accessibility-btn:hover {
+      background: var(--gold-light);
+    }
+
+    /* Основные стили */
+    header {
+      background-color: var(--bg-dark);
+      padding: 0.8rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.4);
+      border-bottom: 1px solid var(--gold-main);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .logo h1 {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 0;
+    }
+
+    .logo-img {
+      height: 70px;
+      width: auto;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .logo-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--gold-main);
+      text-shadow: 0 0 5px rgba(211, 170, 102, 0.3);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    nav a i {
+      margin-right: 6px;
+      color: var(--gold-main);
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--gold-main);
+    }
+
+    nav a:hover i {
+      transform: scale(1.1);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -3px;
+      left: 0;
+      background: var(--gold-main);
+      transition: 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    section {
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      letter-spacing: 1px;
+      color: var(--gold-main);
+    }
+
+    h2 i {
+      margin-right: 8px;
+      color: var(--gold-main);
+    }
+
+    #hero {
+      height: calc(100vh - 8px);
+      background: url('hero.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-top: -80px;
+      position: relative;
+    }
+
+    .hero-content {
+      background: rgba(30, 35, 39, 0.85);
+      padding: 3rem;
+      border-radius: 10px;
+      animation: fadeIn 2s ease-in-out;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid var(--gold-main);
+    }
+
+    .hero-content h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--gold-main);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-content h2 span {
+      color: #fff;
+      font-weight: 400;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--gold-main);
+      color: #1E2327;
+      padding: 0.8rem 2rem;
+      border-radius: 5px;
+      margin-top: 1.5rem;
+      transition: all 0.4s ease;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn i {
+      margin-right: 8px;
+    }
+
+    .btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-3px);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .service {
+      background: var(--bg-medium);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      cursor: default;
+      border: 1px solid var(--text-gray);
+    }
+
+    .service:hover {
+      transform: translateY(-10px);
+      border-color: var(--gold-main);
+    }
+
+    .service i {
+      font-size: 2rem;
+      color: var(--gold-main);
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .service:hover i {
+      transform: scale(1.2);
+    }
+
+    .gallery {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .gallery img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s;
+      border: 1px solid var(--text-gray);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      border-color: var(--gold-main);
+    }
+
+    .review {
+      background: var(--bg-medium);
+      padding: 1.5rem;
+      margin: 1rem auto;
+      border-radius: 8px;
+      max-width: 700px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--text-gray);
+    }
+
+    .review:hover {
+      border-color: var(--gold-main);
+    }
+
+    .review span {
+      display: block;
+      margin-top: 0.5rem;
+      font-style: italic;
+      color: var(--text-gray);
+    }
+
+    .contact-info p {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+    .contact-info i {
+      color: var(--gold-main);
+      margin-right: 0.5rem;
+    }
+
+    .divider {
+      background: linear-gradient(135deg, var(--gold-main), var(--bg-dark));
+      padding: 2rem 0;
+      margin: 4rem 0 0;
+      text-align: center;
+      color: white;
+    }
+
+    /* Стили для образовательной ссылки */
+    .education-link {
+      display: inline-block;
+      margin-top: 2rem;
+      color: var(--gold-main);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--gold-main);
+      padding-bottom: 3px;
+      transition: all 0.3s;
+    }
+
+    .education-link:hover {
+      color: var(--gold-light);
+      border-bottom-color: var(--gold-light);
+    }
+
+    .education-link i {
+      margin-left: 5px;
+    }
+
+    footer {
+      background: var(--bg-dark);
+      color: var(--text-gray);
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      border-top: 1px solid var(--gold-main);
+    }
+
+    /* Мобильное меню */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--gold-main);
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 1001;
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 35, 39, 0.95);
+  z-index: 1000;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-menu.active {
+  display: flex;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  text-align: center;
+}
+
+.mobile-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.mobile-menu a i {
+  margin-right: 10px;
+  color: var(--gold-main);
+}
+
+/* Стили для слабовидящих */
+
+body.accessibility-mode .mobile-menu {
+  background: #8B4513 !important; /* Коричневый фон */
+}
+
+body.accessibility-mode .mobile-menu a {
+  color: #fff !important; /* Белый текст */
+  font-size: 1.8rem !important;
+}
+
+body.accessibility-mode .mobile-menu a i {
+  color: #fff !important; /* Белые иконки */
+  opacity: 0.8;
+}
+
+body.accessibility-mode .mobile-menu a:hover {
+  text-decoration: underline;
+}
+
+
+body.accessibility-mode .mobile-menu a i {
+  color: #8B4513 !important;
+}
+
+  @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Мобильные стили */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 70px;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        padding: 10px 0;
+      }
+
+      .logo h1 {
+        margin-bottom: 15px;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+      
+      nav a {
+        font-size: 0.9rem;
+        padding: 5px 8px;
+      }
+      
+      nav a i {
+        margin-right: 4px;
+        font-size: 0.8rem;
+      }
+
+      .hero-content {
+        padding: 2rem 1rem;
+        margin: 0 15px;
+      }
+
+      .hero-content h2 {
+        font-size: 1.8rem;
+        flex-direction: column;
+        gap: 5px;
+      }
+      
+      .hero-content p {
+        font-size: 1rem;
+      }
+
+      .logo-img {
+        height: 50px;
+      }
+
+      .logo-text {
+        font-size: 1.5rem;
+      }
+      
+      .language-switcher {
+        position: static;
+        margin: 10px 0;
+      }
+      
+      section {
+        padding: 2.5rem 0;
+      }
+      
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .service {
+        padding: 1.5rem;
+      }
+      
+      .gallery {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      
+      .gallery img {
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+      }
+      
+      .review {
+        padding: 1rem;
+        margin: 0.8rem auto;
+      }
+      
+      .contact-info p {
+        font-size: 1rem;
+        text-align: left;
+        padding: 0 15px;
+      }
+      
+      .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+      }
+      
+      .divider {
+        padding: 1.5rem 0;
+        margin: 2rem 0 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding-top: 60px;
+      }
+      
+      .hero-content h2 {
+        font-size: 1.5rem;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      .service i {
+        font-size: 1.8rem;
+      }
+      
+      .contact-info p {
+        font-size: 0.9rem;
+      }
+      
+      .accessibility-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+      }
+      
+      body.accessibility-mode {
+        font-size: 18px !important;
+      }
+      
+      
+    body.accessibility-mode .mobile-menu a {
+      color: black !important; /* ЧЕРНЫЙ цвет текста */
+      font-size: 1.8rem !important;
+    }
+
+
+      body.accessibility-mode h2,
+      body.accessibility-mode .hero-content h2,
+      body.accessibility-mode .divider h2 {
+        font-size: 2.2rem !important;
+      }
+      
+      @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+  
+      .menu-toggle {
+        display: block;
+      }
+  
+      .header-content {
+        padding-right: 50px;
+      }
+      }
+
+      @media (max-width: 480px) {
+    .mobile-menu a {
+      font-size: 1.3rem;
+    }
+  
+    body.accessibility-mode .mobile-menu a {
+      font-size: 2rem !important;
+    }
+  }}
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    /* Стили для прайс-листа */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+  
+  .price-card {
+    background: var(--bg-medium);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    border: 1px solid var(--text-gray);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .price-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    border-color: var(--gold-main);
+  }
+  
+  .price-card.highlight {
+    border: 2px solid var(--gold-main);
+    position: relative;
+  }
+  
+  .price-card.highlight:before {
+    content: "Выгодно";
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: var(--gold-main);
+    color: var(--bg-dark);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.8em;
+  }
+  
+  .price-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .price-header i {
+    font-size: 2.5rem;
+    color: var(--gold-main);
+    margin-bottom: 15px;
+  }
+  
+  .price-header h3 {
+    color: var(--gold-main);
+    margin: 10px 0;
+    font-size: 1.5rem;
+  }
+  
+  .price-amount {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin: 15px 0;
+  }
+  
+  .price-features {
+    flex-grow: 1;
+    margin: 20px 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .price-features li {
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--text-gray);
+    position: relative;
+    padding-left: 25px;
+  }
+  
+  .price-features li:before {
+    content: "•";
+    color: var(--gold-main);
+    font-size: 1.5em;
+    position: absolute;
+    left: 0;
+    top: -2px;
+  }
+  
+  .btn-outline {
+    background: transparent;
+    border: 2px solid var(--gold-main);
+    color: var(--gold-main);
+  }
+  
+  .btn-outline:hover {
+    background: var(--gold-main);
+    color: var(--bg-dark);
+  }
+  
+  @media (max-width: 768px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  /* Стили для прайса в обычном режиме */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+  
+  .price-card {
+    background: var(--bg-medium);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    border: 1px solid var(--text-gray);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .price-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    border-color: var(--gold-main);
+  }
+  
+  .price-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .price-header i {
+    font-size: 2.5rem;
+    color: var(--gold-main);
+    margin-bottom: 15px;
+  }
+  
+  .price-header h3 {
+    color: var(--gold-main);
+    margin: 10px 0;
+    font-size: 1.5rem;
+  }
+  
+  .price-amount {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin: 15px 0;
+  }
+  
+  .price-features {
+    flex-grow: 1;
+    margin: 20px 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .price-features li {
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--text-gray);
+    position: relative;
+    padding-left: 25px;
+  }
+  
+  .price-features li:before {
+    content: "•";
+    color: var(--gold-main);
+    font-size: 1.5em;
+    position: absolute;
+    left: 0;
+    top: -2px;
+  }
+  
+  /* Стили для режима слабовидящих */
+  body.accessibility-mode .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  body.accessibility-mode .price-card {
+    background: #f0f0f0 !important;
+    border: 3px solid #8B4513 !important;
+    padding: 40px !important;
+  }
+  
+  body.accessibility-mode .price-header i {
+    font-size: 3rem !important;
+    color: #8B4513 !important;
+  }
+  
+  body.accessibility-mode .price-header h3 {
+    color: #8B4513 !important;
+    font-size: 2.2rem !important;
+    margin: 20px 0 !important;
+  }
+  
+  body.accessibility-mode .price-amount {
+    color: #000 !important;
+    font-size: 2.5rem !important;
+    margin: 25px 0 !important;
+  }
+  
+  body.accessibility-mode .price-features li {
+    color: #000 !important;
+    font-size: 1.5rem !important;
+    padding: 15px 0 15px 40px !important;
+    border-bottom: 2px dashed #8B4513 !important;
+  }
+  
+  body.accessibility-mode .price-features li:before {
+    color: #8B4513 !important;
+    font-size: 2.5rem !important;
+    left: 10px !important;
+  }
+  
+  body.accessibility-mode .btn-outline {
+    border: 3px solid #8B4513 !important;
+    color: #8B4513 !important;
+    font-size: 1.5rem !important;
+    padding: 15px 30px !important;
+  }
+  
+  body.accessibility-mode .price-card.highlight {
+    border: 4px solid #8B4513 !important;
+  }
+  
+  body.accessibility-mode .price-card.highlight:before {
+    background: #8B4513 !important;
+    color: #fff !important;
+    font-size: 1.2rem !important;
+    padding: 8px 20px !important;
+    top: -15px !important;
+  }
+
+  /* Новые стили для прайс-листа */
+  .pricing-section {
+    padding: 60px 0;
+  }
+
+  .pricing-category {
+    margin-bottom: 60px;
+  }
+
+  .pricing-category-title {
+    font-size: 2.2rem;
+    color: var(--gold-main);
+    margin-bottom: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .pricing-category-title i {
+    font-size: 2rem;
+  }
+
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    background: var(--bg-medium);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  }
+
+  .pricing-table th, 
+  .pricing-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--text-gray);
+  }
+
+  .pricing-table th {
+    background-color: var(--gold-main);
+    color: var(--bg-dark);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+  }
+
+  .pricing-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .pricing-table tr:hover {
+    background-color: var(--bg-light);
+  }
+
+  .pricing-table .service-name {
+    font-weight: bold;
+    color: var(--gold-light);
+  }
+
+  .pricing-table .price-value {
+    font-weight: bold;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .pricing-note {
+    font-style: italic;
+    color: var(--text-gray);
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .result-block {
+    background: var(--bg-light);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+    border-left: 4px solid var(--gold-main);
+  }
+
+  .result-title {
+    font-weight: bold;
+    color: var(--gold-main);
+    margin-bottom: 10px;
+  }
+
+  /* Адаптивные стили для таблицы */
+  @media (max-width: 768px) {
+    .pricing-table {
+      display: block;
+      overflow-x: auto;
+    }
+
+    .pricing-category-title {
+      font-size: 1.8rem;
+    }
+
+    .pricing-table th, 
+    .pricing-table td {
+      padding: 12px 15px;
+      font-size: 0.9rem;
+    }
+  }
+
+  body.accessibility-mode .pricing-table th {
+  color: #000 !important;
+  background-color: #8B4513 !important;
+  font-size: 1.5rem !important;
+}
+
+  body.accessibility-mode .pricing-table td {
+  color: #000 !important;
+  font-size: 1.3rem !important;
+  padding: 20px !important;
+} 
+
+  body.accessibility-mode .service-name {
+  color: #8B4513 !important;
+  font-weight: bold !important;
+  font-size: 1.4rem !important;
+}
+
+  body.accessibility-mode .price-value {
+  color: #000 !important;
+  font-weight: bold !important;
+  font-size: 1.4rem !important;
+}
+
+  body.accessibility-mode .pricing-table th,
+body.accessibility-mode .pricing-table td {
+  border-bottom: 2px solid #8B4513 !important;
+}
+
+  body.accessibility-mode .pricing-category-title {
+  color: #8B4513 !important;
+  font-size: 2.5rem !important;
+}
+
+  body.accessibility-mode .result-block {
+  background: #f0f0f0 !important;
+  border-left: 4px solid #8B4513 !important;
+}
+
+body.accessibility-mode .result-title {
+  color: #8B4513 !important;
+  font-size: 1.8rem !important;
+}
+
+  /* Стили для таблицы прайсов в режиме доступности */
+body.accessibility-mode .pricing-table {
+  background: #fff !important;
+  border: 3px solid #8B4513 !important;
+}
+
+body.accessibility-mode .pricing-table th {
+  background: #8B4513 !important;
+  color: #fff !important;
+  font-size: 1.8rem !important;
+  padding: 20px !important;
+}
+
+body.accessibility-mode .pricing-table td {
+  color: #000 !important;
+  font-size: 1.5rem !important;
+  padding: 15px 20px !important;
+  border-bottom: 2px solid #8B4513 !important;
+}
+
+body.accessibility-mode .service-name {
+  color: #8B4513 !important;
+  font-weight: bold !important;
+}
+
+body.accessibility-mode .price-value {
+  color: #000 !important;
+  font-weight: bold !important;
+}
+
+body.accessibility-mode .pricing-category-title {
+  color: #8B4513 !important;
+  font-size: 2.8rem !important;
+}
+
+body.accessibility-mode .pricing-note {
+  color: #000 !important;
+  font-size: 1.5rem !important;
+}
+
+body.accessibility-mode .result-block {
+  background: #f8f8f8 !important;
+  border-left: 5px solid #8B4513 !important;
+  padding: 25px !important;
+}
+
+body.accessibility-mode .result-title {
+  color: #8B4513 !important;
+  font-size: 2rem !important;
+  margin-bottom: 15px !important;
+}
+
+body.accessibility-mode .pricing-section p {
+  color: #000 !important;
+  font-size: 1.5rem !important;
+}
+
+  body.accessibility-mode nav a,
+body.accessibility-mode .mobile-menu a {
+  color: #000 !important; /* Черный цвет текста */
+}
+
+body.accessibility-mode nav a i,
+body.accessibility-mode .mobile-menu a i {
+  color: #8B4513 !important; /* Коричневый цвет иконок */
+}
+
+body.accessibility-mode nav a:hover,
+body.accessibility-mode .mobile-menu a:hover {
+  color: #8B4513 !important; /* Коричневый при наведении */
+}
+
+body.accessibility-mode nav a::after {
+  background: #8B4513 !important; /* Коричневая полоса подчеркивания */
+}
+
+  /* Стили для кнопки СООО */
+.education-btn {
+    background: var(--gold-main);
+    color: var(--bg-dark);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border: 2px solid var(--gold-dark);
+}
+
+.education-btn:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+/* Стили для режима слабовидящих */
+body.accessibility-mode .education-btn {
+    background: #8B4513 !important;
+    color: #fff !important;
+    font-size: 1.3rem !important;
+    padding: 1.2rem 2.5rem !important;
+    border: 3px solid #5a2d0b !important;
+}
+
+body.accessibility-mode .education-btn:hover {
+    background: #a05a2b !important;
+}
+
+
+  </style>
+</head>
+<body>
+  <!-- Кнопка доступности -->
+  <button class="accessibility-btn" id="accessibilityToggle" title="Версия для слабовидящих">
+    <i class="fas fa-eye"></i>
+  </button>
+
+  <header>
+    <button class="menu-toggle" id="mobileMenuToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="#about"><i class="fa-solid fa-info-circle"></i> О нас</a></li>
+        <li><a href="#services"><i class="fa-solid fa-list-check"></i> Услуги</a></li>
+        <li><a href="#pricing"><i class="fa-solid fa-money-bill-wave"></i> Прайс</a></li>
+        <li><a href="#gallery"><i class="fa-solid fa-camera"></i> Галерея</a></li>
+        <li><a href="#education"><i class="fa-solid fa-graduation-cap"></i> СООО</a></li>
+        <li><a href="#contact"><i class="fa-solid fa-phone"></i> Контакты</a></li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <h1>
+            <img src="pulya_logo.png" alt="Логотип Тир Пуля" class="logo-img">
+          </h1>
+        </div>
+
+        <nav>
+          <ul>
+            <li><a href="#about"><i class="fa-solid fa-info-circle"></i> О нас</a></li>
+            <li><a href="#services"><i class="fa-solid fa-list-check"></i> Услуги</a></li>
+            <li><a href="#pricing"><i class="fa-solid fa-money-bill-wave"></i> Прайс</a></li>
+            <li><a href="#gallery"><i class="fa-solid fa-camera"></i> Галерея</a></li>
+            <li><a href="#education"><i class="fa-solid fa-graduation-cap"></i> СООО</a></li>
+            <li><a href="#contact"><i class="fa-solid fa-phone"></i> Контакты</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section id="hero">
+    <div class="hero-content">
+      <h2><i class="fa-solid fa-crosshairs"></i> Испытай точность в реальном тире</h2>
+      <p>Ощути мощь и адреналин выстрела — безопасно и интересно!</p>
+      <a href="#services" class="btn"><i class="fa-solid fa-arrow-right"></i> Узнать больше</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <h2><i class="fa-solid fa-info"></i> О нас</h2>
+      <p>Мы — команда профессионалов, объединённых страстью к стрельбе. В тире "Пуля" вас ждёт безопасная обстановка, лицензированное оборудование и дружелюбные инструкторы. Подходит как для новичков, так и для опытных стрелков.</p>
+    </div>
+  </section>
+
+  <section class="divider">
+    <div class="container">
+      <h2>Наши Услуги</h2>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="services-grid">
+        <div class="service">
+          <i class="fa-solid fa-gun"></i>
+          <h3>Аренда оружия</h3>
+          <p>Выбирай из широкого ассортимента пневматического и огнестрельного оружия.</p>
+        </div>
+        <div class="service">
+          <i class="fa-solid fa-person-rifle"></i>
+          <h3>Индивидуальные тренировки</h3>
+          <p>Профессиональные наставники для любого уровня.</p>
+        </div>
+        <div class="service">
+          <i class="fa-solid fa-people-group"></i>
+          <h3>Групповые занятия</h3>
+          <p>Отличный вариант для друзей, корпоративов и тимбилдинга.</p>
+        </div>
+        <div class="service">
+          <i class="fa-solid fa-medal"></i>
+          <h3>Соревнования</h3>
+          <p>Организация турниров, рейтингов и призов для стрелков.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="pricing-section">
+    <div class="container">
+      <h2><i class="fa-solid fa-money-bill-wave"></i> Прайс-лист</h2>
+      <p>Выберите подходящий для вас вариант или создайте индивидуальную программу</p>
+
+      <!-- Категория 1 -->
+      <div class="pricing-category">
+        <h3 class="pricing-category-title">
+          <i class="fas fa-star"></i> Старт статуса
+        </h3>
+        
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Услуга</th>
+              <th>Описание</th>
+              <th>Цена</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="service-name">Выстрел</td>
+              <td>1 выстрел в клубе</td>
+              <td class="price-value">от 50 ₽</td>
+            </tr>
+            <tr>
+              <td class="service-name">Премиум-пробная тренировка</td>
+              <td>1 час: на выбор 3 вида оружия, инструктор</td>
+              <td class="price-value">25 000 ₽</td>
+            </tr>
+            <tr>
+              <td class="service-name">Тест-день в клубе</td>
+              <td>2 часа: стрельба, экскурсия, знакомство с VIP-зоной</td>
+              <td class="price-value">50 000 ₽</td>
+            </tr>
+            <tr>
+              <td class="service-name">Закрепление оружия в клубе</td>
+              <td>Закрепление единоличного права пользования оружием</td>
+              <td class="price-value">от 60 000 ₽</td>
+            </tr>
+            <tr>
+              <td class="service-name">Пристрелка личного оружия</td>
+              <td>1 час: пристрелка своего личного оружия</td>
+              <td class="price-value">25 000 ₽</td>
+            </tr>
+            <tr>
+              <td class="service-name">Помощь в обслуживании оружия</td>
+              <td>По договоренности помощь в обслуживании личного оружия</td>
+              <td class="price-value">от 3 000 ₽</td>
+            </tr>
+            <tr>
+              <td class="service-name">Личное оружие и патроны</td>
+              <td>1 час: стрельба со своими патронами</td>
+              <td class="price-value">от 25 000 ₽</td>
+            </tr>
+            <tr>
+              <td class="service-name">Первая дуэль</td>
+              <td>1 час: парная стрельба (2 участника), атмосфера игры, фотосессия (для подготовленных стрелков)</td>
+              <td class="price-value">40 000 ₽</td>
+            </tr>
+            <tr>
+              <td class="service-name">Подарочный VIP-сертификат для первого визита</td>
+              <td>Старт для вашего друга: оружие + впечатление</td>
+              <td class="price-value">25 000 ₽</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <p class="pricing-note">В стоимость услуг патроны не включены и оплачиваются дополнительно.</p>
+      </div>
+
+      <!-- Категория 2 -->
+      <div class="pricing-category">
+        <h3 class="pricing-category-title">
+          <i class="fas fa-gem"></i> Club Privé
+        </h3>
+        
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Услуга</th>
+              <th>Что входит</th>
+              <th>Цена</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="service-name">Членство Gold</td>
+              <td>4 посещения в месяц, приоритет, шкафчик</td>
+              <td class="price-value">70 000 ₽ / мес</td>
+            </tr>
+            <tr>
+              <td class="service-name">Членство Platinum</td>
+              <td>8 занятий, персональный инструктор, шкафчик, VIP-комната</td>
+              <td class="price-value">120 000 ₽ / мес</td>
+            </tr>
+            <tr>
+              <td class="service-name">Членство Black Card</td>
+              <td>Безлимит, консультации по безопасности, шкафчик, VIP-гости, VIP-комната</td>
+              <td class="price-value">300 000 ₽ / мес</td>
+            </tr>
+            <tr>
+              <td class="service-name">Индивидуальный курс "Мастер выстрела"</td>
+              <td>6 сессий, психологическая точность, охотничья стрельба</td>
+              <td class="price-value">150 000 ₽</td>
+            </tr>
+            <tr>
+              <td class="service-name">Private Shooting Day</td>
+              <td>Закрытие зала под клиента. Бар, музыка, стрельба (количество гостей оговаривается отдельно) свыше 10 часов</td>
+              <td class="price-value">от 300 000 ₽ / день</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <div class="result-block">
+          <div class="result-title">Результат:</div>
+          <p>Приватность и статус. Все встречи строго по записи. Закрытые мероприятия только для членов клуба.</p>
+        </div>
+      </div>
+
+      <!-- Категория 3 -->
+      <div class="pricing-category">
+        <h3 class="pricing-category-title">
+          <i class="fas fa-crown"></i> Lifestyle & Power
+        </h3>
+        
+        <p style="text-align: center; margin-bottom: 30px; font-style: italic;">
+          Стрелковый клуб ПУЛЯ — это не просто стрельба, а способ жизни, медитация силы и восстановление власти над собой.
+        </p>
+        
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Услуга</th>
+              <th>Впечатление</th>
+              <th>Цена</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="service-name">Семейный VIP-день "Сила рода"</td>
+              <td>Папа+сын / мама+дочь, тир, традиции, фотосессия, выезд на стрельбище</td>
+              <td class="price-value">от 300 000 ₽</td>
+            </tr>
+            <tr>
+              <td class="service-name">Бизнес-интенсив "Личное оружие"</td>
+              <td>4 часа, инструктор, стратегия и стрельба</td>
+              <td class="price-value">90 000 ₽</td>
+            </tr>
+            <tr>
+              <td class="service-name">Корпоративный event «Игры силы»</td>
+              <td>Турнир, медали, кейтеринг, музыка, фотосессия</td>
+              <td class="price-value">от 300 000 ₽</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Категория 4 -->
+      <div class="pricing-category">
+        <h3 class="pricing-category-title">
+          <i class="fas fa-bullseye"></i> Продвинутые индивидуальные услуги
+        </h3>
+        
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Услуга</th>
+              <th>Что входит</th>
+              <th>Цена</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="service-name">Снайперский курс 5.0</td>
+              <td>Полевые условия, дальние дистанции, работа с дыханием</td>
+              <td class="price-value">120 000 ₽</td>
+            </tr>
+            <tr>
+              <td class="service-name">Тактическая стрельба</td>
+              <td>Стрессовые ситуации, движение, реализм</td>
+              <td class="price-value">90 000 ₽</td>
+            </tr>
+            <tr>
+              <td class="service-name">Инструктор-телохранитель</td>
+              <td>Личный инструктор по охране, скрытая стрельба, VIP-сопровождение</td>
+              <td class="price-value">150 000 ₽</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <div class="result-block">
+          <div class="result-title">Результат:</div>
+          <p>Ощущение власти, свободы, возвращения контроля над собой. Трансформация образа себя, лёгкость, желание творить. WOW-эффект, уникальные эмоции, посты в соцсетях. Эмоциональный катарсис, разрядка, внутренний подъём.</p>
+        </div>
+      </div>
+
+      <!-- Категория 5 -->
+      <div class="pricing-category">
+        <h3 class="pricing-category-title">
+          <i class="fas fa-plus-circle"></i> Дополнительные услуги
+        </h3>
+        
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Услуга</th>
+              <th>Описание</th>
+              <th>Цена</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="service-name">Аренда VIP-зоны</td>
+              <td>Бар, кожаные кресла, проведение переговоров</td>
+              <td class="price-value">20 000 ₽ / час</td>
+            </tr>
+            <tr>
+              <td class="service-name">Психологическая стрельба</td>
+              <td>Работа с эмоциями и стрессом через оружие</td>
+              <td class="price-value">35 000 ₽ / сессия</td>
+            </tr>
+            <tr>
+              <td class="service-name">Фотосессия «Сила и стиль»</td>
+              <td>Профессиональная съёмка с оружием по предварительной записи</td>
+              <td class="price-value">от 50 000 ₽</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Категория 6 -->
+      <div class="pricing-category">
+        <h3 class="pricing-category-title">
+          <i class="fas fa-gift"></i> Подарочные сертификаты
+        </h3>
+        
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Вид</th>
+              <th>Описание</th>
+              <th>Цена</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="service-name">Мужская сила</td>
+              <td>1,5 часа с оружием, фото, виски-бар</td>
+              <td class="price-value">30 000 ₽</td>
+            </tr>
+            <tr>
+              <td class="service-name">Дуэль для двоих</td>
+              <td>Парная сессия, романтика и стрельба</td>
+              <td class="price-value">50 000 ₽</td>
+            </tr>
+            <tr>
+              <td class="service-name">Король меткости</td>
+              <td>Лучший сертификат. Индивидуальный подход, оружие на выбор, VIP-зона</td>
+              <td class="price-value">80 000 ₽</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="container">
+      <h2><i class="fa-solid fa-camera-retro"></i> Галерея</h2>
+      <div class="gallery">
+        <a href="weapons.html" class="gallery-item">
+          <img src="images/pistol1.jpg" alt="Оружие в тире">
+        </a>
+        <a href="hall.html" class="gallery-item">
+          <img src="images/hall1.jpg" alt="Зал тира">
+        </a>
+        <a href="instructors.html" class="gallery-item">
+          <img src="images/instructor1.jpg" alt="Инструкторы">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="container">
+        <h2><i class="fa-solid fa-graduation-cap"></i> СООО</h2>
+        <div style="margin-top: 2rem;">
+            <a href="sveden.html" class="btn education-btn">
+                <i class="fas fa-file-alt"></i> Сведения об образовательной организации
+            </a>
+        </div>
+    </div>
+</section>
+
+  <section id="contact">
+    <div class="container">
+      <h2><i class="fa-solid fa-address-book"></i> Контакты</h2>
+      <div class="contact-info">
+        <p><i class="fa-solid fa-location-dot"></i> 141435, МОСКОВСКАЯ ОБЛАСТЬ, Г.О. ХИМКИ, Г ХИМКИ, МКР. НОВОГОРСК, УЛ ЗАРЕЧНАЯ, ВЛД. 11, ЭТАЖ 2, ПОМЕЩ. 2</p>
+        <p><i class="fa-solid fa-phone"></i> +7 926 765-00-48 8-495-66-44-123</p>
+        <p><i class="fa-solid fa-envelope"></i> anodpopulya@yandex.ru</p>
+      </div>
+      <a href="tel:8-495-66-44-123" class="btn"><i class="fa-solid fa-phone-volume"></i> Позвонить нам</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Тир "Пуля". Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('accessibilityToggle').addEventListener('click', function() {
+      document.body.classList.toggle('accessibility-mode');
+      
+      const isAccessibilityMode = document.body.classList.contains('accessibility-mode');
+      localStorage.setItem('accessibilityMode', isAccessibilityMode);
+      
+      const icon = this.querySelector('i');
+      if (isAccessibilityMode) {
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+        this.title = "Обычная версия";
+        // Принудительно закрываем мобильное меню при переключении
+        document.getElementById('mobileMenu').classList.remove('active');
+        document.getElementById('mobileMenuToggle').querySelector('i').classList.add('fa-bars');
+        document.getElementById('mobileMenuToggle').querySelector('i').classList.remove('fa-times');
+      } else {
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+        this.title = "Версия для слабовидящих";
+      }
+    });
+      
+    window.addEventListener('DOMContentLoaded', function() {
+      const savedMode = localStorage.getItem('accessibilityMode');
+      if (savedMode === 'true') {
+        document.body.classList.add('accessibility-mode');
+        const btn = document.getElementById('accessibilityToggle');
+        const icon = btn.querySelector('i');
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+        btn.title = "Обычная версия";
+      }
+      
+      // Мобильное меню - исправленный код
+      const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      mobileMenuToggle.addEventListener('click', function() {
+        mobileMenu.classList.toggle('active');
+        
+        // Меняем иконку
+        const icon = this.querySelector('i');
+        if (mobileMenu.classList.contains('active')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-times');
+        } else {
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      });
+
+      // Закрытие меню при клике на ссылку
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('active');
+          mobileMenuToggle.querySelector('i').classList.add('fa-bars');
+          mobileMenuToggle.querySelector('i').classList.remove('fa-times');
+        });
+      });  
+    });
+  </script>
+</body>
+</html>

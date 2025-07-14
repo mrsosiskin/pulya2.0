@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Наше оружие | СК "Пуля"</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-dark: #1E2327;
+      --primary-gray: #686C70;
+      --primary-gold: #D3AA66;
+      --gold-light: #e0c48a;
+    }
+    
+    body {
+      font-family: 'Arial', sans-serif;
+      background: var(--primary-dark);
+      color: white;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      background: var(--primary-dark);
+      padding: 20px 0;
+      border-bottom: 2px solid var(--primary-gold);
+      text-align: center;
+    }
+    
+    h1, h2 {
+      color: var(--primary-gold);
+      text-align: center;
+    }
+    
+    h1 {
+      margin-bottom: 10px;
+    }
+    
+    h2 {
+      border-bottom: 1px solid var(--primary-gray);
+      padding-bottom: 10px;
+      margin-top: 40px;
+    }
+    
+    .back-btn {
+      display: inline-block;
+      color: var(--primary-gold);
+      text-decoration: none;
+      margin: 20px 0;
+      font-size: 1.1em;
+    }
+    
+    .back-btn i {
+      margin-right: 8px;
+    }
+    
+    /* Стили галереи */
+    .weapon-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+    
+    .weapon-card {
+      background: rgba(42, 49, 56, 0.7);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid var(--primary-gray);
+    }
+    
+    .weapon-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      border-color: var(--primary-gold);
+    }
+    
+    .weapon-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--primary-gray);
+    }
+    
+    .weapon-info {
+      padding: 20px;
+    }
+    
+    .weapon-title {
+      color: var(--primary-gold);
+      margin: 0 0 10px 0;
+      font-size: 1.3em;
+    }
+    
+    .weapon-desc {
+      color: var(--primary-gray);
+      margin: 0;
+    }
+    
+    footer {
+      background: var(--primary-dark);
+      color: var(--primary-gray);
+      text-align: center;
+      padding: 30px 0;
+      margin-top: 50px;
+      border-top: 1px solid var(--primary-gold);
+    }
+    
+    /* Адаптация для мобильных */
+    @media (max-width: 768px) {
+      .weapon-gallery {
+        grid-template-columns: 1fr;
+      }
+      
+      .weapon-img {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><i class="fas fa-gun"></i> Наше оружие</h1>
+    </div>
+  </header>
+  
+  <main class="container">
+    <a href="index.html" class="back-btn">
+      <i class="fas fa-arrow-left"></i> Вернуться на главную
+    </a>
+    
+    <h2>Пистолеты</h2>
+    
+    <div class="weapon-gallery">
+      <!-- Пример 1 -->
+      <div class="weapon-card">
+        <img src="images/pistol1.jpg" alt="Пистолет Glock 17" class="weapon-img">
+        <div class="weapon-info">
+          <h3 class="weapon-title">Glock 17</h3>
+          <p class="weapon-desc">9×19mm Gen 4</p>
+        </div>
+      </div>
+      
+      <!-- Пример 2 -->
+      <div class="weapon-card">
+        <img src="images/pistol2.jpg" alt="Пистолет CZ" class="weapon-img">
+        <div class="weapon-info">
+          <h3 class="weapon-title">Пистолет CZ</h3>
+          <p class="weapon-desc">75 SP-01 Shadow</p>
+        </div>
+      </div>
+      
+      <!-- Пример 3 -->
+      <div class="weapon-card">
+        <img src="images/pistol3.jpg" alt="Пистолет Байкал-442" class="weapon-img">
+        <div class="weapon-info">
+          <h3 class="weapon-title">Байкал-442</h3>
+          <p class="weapon-desc">9×18mm </p>
+        </div>
+      </div>
+    </div>
+
+
+    
+    <h2>Карабины</h2>
+    
+    <div class="weapon-gallery">
+      <!-- Пример 1 -->
+      <div class="weapon-card">
+        <img src="images/karabin1.jpg" alt="Карабин ППШ-Luger" class="weapon-img">
+        <div class="weapon-info">
+          <h3 class="weapon-title">Карабин ППШ-Luger</h3>
+          <p class="weapon-desc">9x19</p>
+        </div>
+      </div>
+      
+      <!-- Пример 2 -->
+      <div class="weapon-card">
+        <img src="images/karabin2.jpg" alt="Карабин охотничий Сайга-9" class="weapon-img">
+        <div class="weapon-info">
+          <h3 class="weapon-title">Карабин охотничий Сайга-9</h3>
+          <p class="weapon-desc">9x19</p>
+        </div>
+      </div>
+    </div>
+    
+    
+  <footer>
+    <div class="container">
+      <p>© 2025 Тир "Пуля". Все права защищены.</p>
+    </div>
+  </footer>
+</body>
+</html>

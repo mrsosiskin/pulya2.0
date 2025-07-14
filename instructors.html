@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Наши инструкторы | СК "Пуля"</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-dark: #1E2327;
+      --primary-gray: #686C70;
+      --primary-gold: #D3AA66;
+      --gold-light: #e0c48a;
+    }
+    
+    body {
+      font-family: 'Arial', sans-serif;
+      background: var(--primary-dark);
+      color: white;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      background: var(--primary-dark);
+      padding: 20px 0;
+      border-bottom: 2px solid var(--primary-gold);
+      text-align: center;
+    }
+    
+    h1, h2 {
+      color: var(--primary-gold);
+      text-align: center;
+    }
+    
+    h1 {
+      margin-bottom: 10px;
+    }
+    
+    h2 {
+      border-bottom: 1px solid var(--primary-gray);
+      padding-bottom: 10px;
+      margin-top: 40px;
+    }
+    
+    .back-btn {
+      display: inline-block;
+      color: var(--primary-gold);
+      text-decoration: none;
+      margin: 20px 0;
+      font-size: 1.1em;
+    }
+    
+    .back-btn i {
+      margin-right: 8px;
+    }
+    
+    /* Стили карточек инструкторов */
+    .instructors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+    
+    .instructor-card {
+      background: rgba(42, 49, 56, 0.7);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid var(--primary-gray);
+      text-align: center;
+    }
+    
+    .instructor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      border-color: var(--primary-gold);
+    }
+    
+    .instructor-img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--primary-gray);
+    }
+    
+    .instructor-info {
+      padding: 20px;
+    }
+    
+    .instructor-name {
+      color: var(--primary-gold);
+      margin: 0 0 10px 0;
+      font-size: 1.4em;
+    }
+    
+    .instructor-rank {
+      color: var(--gold-light);
+      font-style: italic;
+      margin-bottom: 15px;
+      display: block;
+    }
+    
+    .instructor-bio {
+      color: var(--primary-gray);
+      margin: 0 0 15px 0;
+    }
+    
+    .instructor-contacts {
+      margin-top: 15px;
+    }
+    
+    .instructor-contacts a {
+      color: var(--primary-gold);
+      margin: 0 10px;
+      font-size: 1.2em;
+      transition: color 0.3s;
+    }
+    
+    .instructor-contacts a:hover {
+      color: var(--gold-light);
+    }
+    
+    footer {
+      background: var(--primary-dark);
+      color: var(--primary-gray);
+      text-align: center;
+      padding: 30px 0;
+      margin-top: 50px;
+      border-top: 1px solid var(--primary-gold);
+    }
+    
+    @media (max-width: 768px) {
+      .instructors-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .instructor-img {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><i class="fas fa-users"></i> Наши инструкторы</h1>
+    </div>
+  </header>
+  
+  <main class="container">
+    <a href="index.html" class="back-btn">
+      <i class="fas fa-arrow-left"></i> Вернуться на главную
+    </a>
+    
+    <div class="instructors-grid">
+      <!-- Инструктор 1 -->
+      <div class="instructor-card">
+        <img src="images/instructor1.jpg" alt="Иван Петров" class="instructor-img">
+        <div class="instructor-info">
+          <h3 class="instructor-name">Иван Петров</h3>
+          <span class="instructor-rank">Старший инструктор</span>
+          <p class="instructor-bio">
+            Мастер спорта по пулевой стрельбе. Опыт работы - 12 лет. 
+            Специализация: пистолеты, подготовка к соревнованиям.
+          </p>
+          <div class="instructor-contacts">
+            <a href="tel:+79001234567"><i class="fas fa-phone"></i></a>
+            <a href="mailto:ivan@tir-pulya.ru"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Инструктор 2 -->
+      <div class="instructor-card">
+        <img src="images/instructor2.jpg" alt="Алексей Смирнов" class="instructor-img">
+        <div class="instructor-info">
+          <h3 class="instructor-name">Алексей Смирнов</h3>
+          <span class="instructor-rank">Инструктор по тактической стрельбе</span>
+          <p class="instructor-bio">
+            Бывший сотрудник спецподразделений. Опыт работы - 8 лет.
+            Специализация: тактическая стрельба, самооборона.
+          </p>
+          <div class="instructor-contacts">
+            <a href="tel:+79007654321"><i class="fas fa-phone"></i></a>
+            <a href="mailto:alexey@tir-pulya.ru"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Инструктор 3 -->
+      <div class="instructor-card">
+        <img src="images/instructor3.jpg" alt="Ольга Ковалева" class="instructor-img">
+        <div class="instructor-info">
+          <h3 class="instructor-name">Ольга Ковалева</h3>
+          <span class="instructor-rank">Инструктор для новичков</span>
+          <p class="instructor-bio">
+            КМС по пулевой стрельбе. Опыт работы - 5 лет.
+            Специализация: работа с новичками, женские группы.
+          </p>
+          <div class="instructor-contacts">
+            <a href="tel:+79005553535"><i class="fas fa-phone"></i></a>
+            <a href="mailto:olga@tir-pulya.ru"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p>© 2025 Тир "Пуля". Все права защищены.</p>
+    </div>
+  </footer>
+</body>
+</html>
